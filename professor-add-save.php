@@ -49,7 +49,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 $pName = $_POST['pName'];
-$sql = "INSERT INTO Professor(ProfessorLastName) value (?)";
+$sql = "INSERT INTO Professor(ProfessorFirstName, ProfessorLastName) value (?,?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s",$pName);
 $stmt->execute();
