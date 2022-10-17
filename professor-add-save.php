@@ -51,7 +51,7 @@ if ($conn->connect_error) {
 $pName = $_POST['pName'];
 $sql = "INSERT INTO Professor(ProfessorFirstName, ProfessorLastName) value (?,?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s",$pName);
+$stmt->bind_param("ss",$pName);
 $stmt->execute();
 ?>
 <h1 style="text-align:center;">Add Professor</h1>
