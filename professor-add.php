@@ -40,12 +40,12 @@
 <form method="post" action="professor-add-save.php">
   <div class="mb-3">
     <label for="professorFirstName">First Name</label>
-    <input type="text" class="form-control" id="professorName" aria-describedby="nameHelp" name="pFName">
+    <input type="text" class="form-control" id="professorFirstName" aria-describedby="nameHelp" name="pName">
     <div id="nameHelp" class="form-text text-muted">Enter the professor's name.</div>
   </div>
   <div class="mb-3">
     <label for="professorLastName">Last Name</label>
-    <input type="text" class="form-control" id="professorName" aria-describedby="nameHelp" name="pLName">
+    <input type="text" class="form-control" id="professorLastName" aria-describedby="nameHelp" name="pName">
     <div id="nameHelp" class="form-text text-muted">Enter the professor's name.</div>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
