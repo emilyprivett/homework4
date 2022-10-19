@@ -73,7 +73,7 @@ if ($result->num_rows > 0) {
   </div>
    <div class="mb-3">
     <label for="professorEmail">Email</label>
-    <input type="text" class="form-control" id="professorEmail" aria-describedby="emailHelp" name="email" value="<?=$row['ProfessorEmail']?>">
+    <input type="text" class="form-control" id="professorEmail" aria-describedby="emailHelp" name="email" value="<?=$row['Email']?>">
     <div id="emailHelp" class="form-text text-muted">Enter the professor's email.</div>
   </div>
   <input type="hidden" name="pid" value="<?=$row['ProfessorID']?>">

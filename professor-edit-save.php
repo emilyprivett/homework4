@@ -51,7 +51,7 @@ if ($conn->connect_error) {
 $pFName = $_POST['pFName'];
 $pLName = $_POST['pLName'];
 $email = $_POST['email'];
-$sql = "UPDATE Professor SET ProfessorFirstName=?, ProfessorLastName=?, ProfessorEmail=? WHERE ProfessorID=?";
+$sql = "UPDATE Professor SET ProfessorFirstName=?, ProfessorLastName=?, Email=? WHERE ProfessorID=?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sssi",$pFName,$pLName,$email,$_POST['pid']); 
 $stmt->execute();
