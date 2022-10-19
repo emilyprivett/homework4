@@ -67,6 +67,7 @@ if ($result->num_rows > 0) {
       <th>Email</th>
       <th>Course Info</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>

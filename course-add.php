@@ -29,73 +29,30 @@
             <li class="nav-item">
         <a class="nav-link" href="school.php">Schools</a>
       </li>
-                  <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="studentschool.php">Student & School</a>
       </li>
     </ul>
   </div>
 </nav>
-   <h1 style="text-align:center;">Courses</h1>
+<h1 style="text-align:center;">Add Course</h1>
 
-<?php
-$servername = "localhost";
-$username = "emilypri_homework3";
-$password = "h0mework_3";
-$dbname = "emilypri_firstdatabase";
- 
-// Create connection 
-$conn = new mysqli($servername, $username, $password, $dbname);
+<form method="post" action="course-add-save.php">
 
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-$sql = "SELECT * from Course";
-$result = $conn->query($sql);
+  <div class="mb-3">
+    <label for="courseID">Course ID</label>
+    <input type="text" class="form-control" id="courseID" aria-describedby="courseIDHelp" name="cID">
+    <div id="courseIDHelp" class="form-text text-muted">Enter the course ID.</div>
+  </div>
 
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-?>
+<div class="mb-3">
+    <label for="courseName">Course Name</label>
+    <input type="text" class="form-control" id="courseName" aria-describedby="cnameHelp" name="cName">
+    <div id="cnameHelp" class="form-text text-muted">Enter the course name.</div>
+  </div>
 
-    <table class="table table-success">
-  <thead>
-    <tr>
-      <th>Course ID</th>
-      <th>Course Name</th>
-      <th>Professor ID</th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><?=$row["CourseID"]?></td>
-    <td><?=$row["CourseName"]?></td>
-    <td><?=$row["ProfessorID"]?></td>
-    <td>
-    <form method="post" action="course-edit.php">
-        <input type="hidden" name="cid" value="<?=$row["CourseID"]?>" />
-        <input type="submit" value="Edit" class="btn btn-danger" />
-    </form>
-
-    </td>
-       <td>
-    <form method="post" action="course-delete-save.php">
-        <input type="hidden" name="cid" value="<?=$row["CourseID"]?>" />
-        <input type="submit" value="Delete" class="btn btn-primary" />
-    </form>
-
-  </tr>
-<?php
-  }
-} else {
-  echo "0 results";
-}
-$conn->close();
-?>
-  </tbody>
-    </table>
-    <br />
-    <a href="course-add.php" class="btn btn-primary">Add New</a>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
