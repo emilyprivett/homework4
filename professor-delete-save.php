@@ -48,11 +48,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$pFName = $_POST['pFName'];
-$pLName = $_POST['pLName'];
+//$pFName = $_POST['pFName'];
+//$pLName = $_POST['pLName'];
 $sql = "DELETE FROM Professor WHERE ProfessorID=?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssi",$pFName,$pLName,$_POST['pid']);
+$stmt->bind_param("i",$_POST['pid']);
 $stmt->execute();
 ?>
 <h1 style="text-align:center;">Delete Professor</h1>
