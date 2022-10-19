@@ -48,10 +48,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$pName = $_POST['pName'];
-$sql = "UPDATE Professor SET ProfessorLastName=? WHERE ProfessorID=?";
+$pFName = $_POST['pFName'];
+$pLName = $_POST['pLName'];
+$sql = "UPDATE Professor SET ProfessorFirstName=?, ProfessorLastName=? WHERE ProfessorID=?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("si",$pName,$_POST['pid']);
+$stmt->bind_param("ssi",$pFName,$pLName,$_POST['pid']);
 $stmt->execute();
 ?>
 <h1 style="text-align:center;">Edit Professor</h1>

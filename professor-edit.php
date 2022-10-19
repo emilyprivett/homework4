@@ -50,7 +50,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT ProfessorID, ProfessorFirstName, ProfessorLastName from Professor WHERE ProfessorID=?";
+$sql = "SELECT ProfessorID, ProfessorFirstName, ProfessorLastName FROM Professor WHERE ProfessorID=?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $_POST['pid']);
 $stmt->execute();
@@ -60,6 +60,7 @@ if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
 ?>
+
 
     <table class="table table-info">
   <thead>
@@ -86,7 +87,7 @@ if ($result->num_rows > 0) {
     </td>
     <td>
     <form method="post" action="professor-edit.php">
-        <input type="hidden" name="profid" value="<?=$row["ProfessorID"]?>" />
+        <input type="hidden" name="pid" value="<?=$row["ProfessorID"]?>" />
         <input type="submit" value="Edit" class="btn btn-danger" />
     </form>
 
@@ -94,8 +95,13 @@ if ($result->num_rows > 0) {
   </tr>
   <form method="post" action="professor-edit-save.php">
   <div class="mb-3">
-    <label for="professorName">Name</label>
-    <input type="text" class="form-control" id="professorName" aria-describedby="nameHelp" name="pName" value="<?=$row['ProfessorLastName']?>">
+    <label for="professorFirstName">Name</label>
+    <input type="text" class="form-control" id="professorFirstName" aria-describedby="nameHelp" name="pFName" value="<?=$row['ProfessorFirstName']?>">
+    <div id="nameHelp" class="form-text text-muted">Enter the professor's name.</div>
+  </div>
+  <div class="mb-3">
+    <label for="professorLastName">Name</label>
+    <input type="text" class="form-control" id="professorLastName" aria-describedby="nameHelp" name="pLName" value="<?=$row['ProfessorLastName']?>">
     <div id="nameHelp" class="form-text text-muted">Enter the professor's name.</div>
   </div>
   <input type="hidden" name="pid" value="<?=$row['ProfessorID']?>">
