@@ -61,21 +61,25 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
 ?>
   <form method="post" action="professor-edit-save.php">
+
   <div class="mb-3">
     <label for="professorFirstName">Name</label>
     <input type="text" class="form-control" id="professorFirstName" aria-describedby="nameHelp" name="pFName" value="<?=$row['ProfessorFirstName']?>">
     <div id="nameHelp" class="form-text text-muted">Enter the professor's name.</div>
   </div>
+
   <div class="mb-3">
     <label for="professorLastName">Name</label>
     <input type="text" class="form-control" id="professorLastName" aria-describedby="nameHelp" name="pLName" value="<?=$row['ProfessorLastName']?>">
     <div id="nameHelp" class="form-text text-muted">Enter the professor's name.</div>
   </div>
+
    <div class="mb-3">
     <label for="professorEmail">Email</label>
     <input type="text" class="form-control" id="professorEmail" aria-describedby="emailHelp" name="email" value="<?=$row['Email']?>">
     <div id="emailHelp" class="form-text text-muted">Enter the professor's email.</div>
   </div>
+
   <input type="hidden" name="pid" value="<?=$row['ProfessorID']?>">
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
