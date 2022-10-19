@@ -71,6 +71,11 @@ if ($result->num_rows > 0) {
     <input type="text" class="form-control" id="professorLastName" aria-describedby="nameHelp" name="pLName" value="<?=$row['ProfessorLastName']?>">
     <div id="nameHelp" class="form-text text-muted">Enter the professor's name.</div>
   </div>
+   <div class="mb-3">
+    <label for="professorEmail">Email</label>
+    <input type="text" class="form-control" id="professorEmail" aria-describedby="emailHelp" name="email" value="<?=$row['ProfessorEmail']?>">
+    <div id="emailHelp" class="form-text text-muted">Enter the professor's email.</div>
+  </div>
   <input type="hidden" name="pid" value="<?=$row['ProfessorID']?>">
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -50,9 +50,10 @@ if ($conn->connect_error) {
 }
 $pFName = $_POST['pFName'];
 $pLName = $_POST['pLName'];
-$sql = "UPDATE Professor SET ProfessorFirstName=?, ProfessorLastName=? WHERE ProfessorID=?";
+$email = $_POST['email'];
+$sql = "UPDATE Professor SET ProfessorFirstName=?, ProfessorLastName=?, ProfessorEmail=? WHERE ProfessorID=?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssi",$pFName,$pLName,$_POST['pid']);
+$stmt->bind_param("sssi",$pFName,$pLName, $email,$_POST['pid']);
 $stmt->execute();
 ?>
 <h1 style="text-align:center;">Edit Professor</h1>

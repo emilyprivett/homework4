@@ -50,10 +50,11 @@ if ($conn->connect_error) {
 }
 $pFName = $_POST['pFName'];
 $pLName = $_POST['pLName'];
+$email = $_POST['email'];
 
-$sql = "INSERT INTO Professor(ProfessorFirstName, ProfessorLastName) value (?,?)";
+$sql = "INSERT INTO Professor(ProfessorFirstName, ProfessorLastName, Email) value (?,?,?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ss",$pFName,$pLName);
+$stmt->bind_param("sss",$pFName,$pLName, $email);
 $stmt->execute();
 ?>
 <h1 style="text-align:center;">Add Professor</h1>
