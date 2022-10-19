@@ -48,10 +48,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$pName = $_POST['pName'];
+$pFName = $_POST['pFName'];
+$pLName = $_POST['pLName'];
+
 $sql = "INSERT INTO Professor(ProfessorFirstName, ProfessorLastName) value (?,?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ss",$pName);
+$stmt->bind_param("ss",$pFName,$pLName);
 $stmt->execute();
 ?>
 <h1 style="text-align:center;">Add Professor</h1>
