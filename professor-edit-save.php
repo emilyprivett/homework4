@@ -53,7 +53,7 @@ $pLName = $_POST['pLName'];
 $email = $_POST['email'];
 $sql = "UPDATE Professor SET ProfessorFirstName=?, ProfessorLastName=?, ProfessorEmail=? WHERE ProfessorID=?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sssi",$pFName,$pLName, $email,$_POST['pid']);
+$stmt->bind_param("sssi",$pFName,$pLName,$email,$_POST['pid']);
 $stmt->execute();
 ?>
 <h1 style="text-align:center;">Edit Professor</h1>
