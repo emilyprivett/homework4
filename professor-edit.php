@@ -50,7 +50,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT ProfessorID, ProfessorFirstName, ProfessorLastName FROM Professor WHERE ProfessorID=?";
+$sql = "SELECT ProfessorID, ProfessorFirstName, ProfessorLastName, Email FROM Professor WHERE ProfessorID=?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $_POST['pid']);
 $stmt->execute();
