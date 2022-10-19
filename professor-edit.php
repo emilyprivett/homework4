@@ -60,39 +60,6 @@ if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
 ?>
-
-
-    <table class="table table-info">
-  <thead>
-    <tr>
-      <th>Professor ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Course Info</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><?=$row["ProfessorID"]?></td>
-    <td><?=$row["ProfessorFirstName"]?></td>
-    <td><?=$row["ProfessorLastName"]?></td>
-    <td><?=$row["Email"]?></td>
-    <td>
-      <form method="post" action="professorcourse.php">
-        <input type="hidden" name="id" value="<?=$row["ProfessorID"]?>" />
-        <input type="submit" value="Courses" />
-      </form>
-    </td>
-    <td>
-    <form method="post" action="professor-edit.php">
-        <input type="hidden" name="pid" value="<?=$row["ProfessorID"]?>" />
-        <input type="submit" value="Edit" class="btn btn-danger" />
-    </form>
-
-    </td>
-  </tr>
   <form method="post" action="professor-edit-save.php">
   <div class="mb-3">
     <label for="professorFirstName">Name</label>
@@ -114,16 +81,6 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
-
-<form method="post" action="professor-edit-save.php">
-  <div class="mb-3">
-    <label for="professorName">Name</label>
-    <input type="text" class="form-control" id="professorName" aria-describedby="nameHelp" name="pName">
-    <div id="nameHelp" class="form-text text-muted">Enter the professor's name.</div>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
