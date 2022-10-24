@@ -52,7 +52,7 @@ $cID = $_POST['cID'];
 $cName = $_POST['cName'];
 $sql = "UPDATE Course SET CourseID=?, CourseName=? WHERE Course_ID=?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("is",$cID,$cName, $_POST['cid']); 
+$stmt->bind_param("isi",$cID,$cName, $_POST['cid']); 
 $stmt->execute();
 ?>
 <h1 style="text-align:center;">Edit Course</h1>
