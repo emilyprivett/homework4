@@ -29,78 +29,39 @@
             <li class="nav-item">
         <a class="nav-link" href="school.php">Schools</a>
       </li>
-                  <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="studentschool.php">Student & School</a>
       </li>
     </ul>
   </div>
 </nav>
-    <h1 style="text-align:center;">Students</h1>
 
 <?php
 $servername = "localhost";
 $username = "emilypri_homework3";
 $password = "h0mework_3";
 $dbname = "emilypri_firstdatabase";
- 
-// Create connection 
-$conn = new mysqli($servername, $username, $password, $dbname);
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * from Student";
-$result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
+$sql = "DELETE FROM Student WHERE StudentID=?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i",$_POST['sid']);
+$stmt->execute();
 ?>
+<h1 style="text-align:center;">Delete Student</h1>
 
-    <table class="table table-warning">
-  <thead>
-    <tr>
-      <th>Student ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>School ID</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><?=$row["StudentID"]?></td>
-    <td><?=$row["StudentFirstName"]?></td>
-    <td><?=$row["StudentLastName"]?></td>
-    <td><?=$row["SchoolID"]?></td>
-    <td>
-    <form method="post" action="student-edit.php">
-        <input type="hidden" name="sid" value="<?=$row["StudentID"]?>" />
-        <input type="submit" value="Edit" class="btn btn-danger" />
-    </form>
+<div class="alert alert-success" role="alert">
+  Student was deleted.
+</div>
 
-    </td>
-       <td>
-    <form method="post" action="student-delete-save.php">
-        <input type="hidden" name="sid" value="<?=$row["StudentID"]?>" />
-        <input type="submit" value="Delete" class="btn btn-primary" />
-    </form>
+<a href="student.php" class= "btn btn primary">Go Back!</a>
 
-    </td>
-  </tr>
-<?php
-  }
-} else {
-  echo "0 results";
-}
-$conn->close();
-?>
-  </tbody>
-    </table>
-    <br />
-    <a href="student-add.php" class="btn btn-primary">Add New</a>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
