@@ -52,7 +52,7 @@ if ($conn->connect_error) {
 }
 $sql = "SELECT Course_ID, CourseID, CourseName FROM Course WHERE Course_ID=?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $_POST['pid']);
+$stmt->bind_param("i", $_POST['cid']);
 $stmt->execute();
 $result = $stmt->get_result();
 

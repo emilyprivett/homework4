@@ -51,7 +51,7 @@ if ($conn->connect_error) {
 
 $sql = "DELETE FROM Course WHERE Course_ID=?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i",$_POST['pid']);
+$stmt->bind_param("i",$_POST['cid']);
 $stmt->execute();
 ?>
 <h1 style="text-align:center;">Delete Course</h1>
