@@ -56,13 +56,13 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("is",$cID,$cName);
 $stmt->execute();
 ?>
-<h1 style="text-align:center;">Add Professor</h1>
+<h1 style="text-align:center;">Add Course</h1>
 
 <div class="alert alert-success" role="alert">
-  New professor was added!
+  New course was added!
 </div>
 
-<a href="professor.php" class= "btn btn primary">Go Back!</a>
+<a href="course.php" class= "btn btn primary">Go Back!</a>
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
