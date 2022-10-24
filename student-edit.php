@@ -65,13 +65,13 @@ if ($result->num_rows > 0) {
   <div class="mb-3">
     <label for="studentFirstName">First Name</label>
     <input type="text" class="form-control" id="studentFirstName" aria-describedby="nameHelp" name="sFName" value="<?=$row['StudentFirstName']?>">
-    <div id="nameHelp" class="form-text text-muted">Enter the professor's name.</div>
+    <div id="nameHelp" class="form-text text-muted">Enter the student's first name.</div>
   </div>
 
   <div class="mb-3">
     <label for="studentLastName">Last Name</label>
     <input type="text" class="form-control" id="studentLastName" aria-describedby="nameHelp" name="sLName" value="<?=$row['StudentLastName']?>">
-    <div id="nameHelp" class="form-text text-muted">Enter the professor's name.</div>
+    <div id="nameHelp" class="form-text text-muted">Enter the student's last name.</div>
   </div>
 
   <input type="hidden" name="sid" value="<?=$row['StudentID']?>">

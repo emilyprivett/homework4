@@ -29,13 +29,13 @@
             <li class="nav-item">
         <a class="nav-link" href="school.php">Schools</a>
       </li>
-            <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="studentschool.php">Student & School</a>
       </li>
     </ul>
   </div>
 </nav>
-<h1 style="text-align:center;">Schools</h1>
+<h1 style="text-align:center;">Edit School</h1>
 
 <?php
 $servername = "localhost";
@@ -50,44 +50,38 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * from School";
-$result = $conn->query($sql);
+$sql = "SELECT SchoolID, SchoolName, State, City FROM School WHERE SchoolID=?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $_POST['scid']);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
 ?>
+  <form method="post" action="school-edit-save.php">
 
-    <table class="table table-danger">
-  <thead>
-    <tr>
-      <th>School ID</th>
-      <th>School Name</th>
-      <th>State</th>
-      <th>City</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><?=$row["SchoolID"]?></td>
-    <td><a href="student-school.php?id=<?=$row["SchoolID"]?>"><?=$row["SchoolName"]?></a></td>
-    <td><?=$row["State"]?></td>
-    <td><?=$row["City"]?></td>
-        <td>
-    <form method="post" action="school-edit.php">
-        <input type="hidden" name="scid" value="<?=$row["SchoolID"]?>" />
-        <input type="submit" value="Edit" class="btn btn-danger" />
-    </form>
+  <div class="mb-3">
+    <label for="schoolName">School Name</label>
+    <input type="text" class="form-control" id="courseNumber" aria-describedby="nameHelp" name="sName" value="<?=$row['SchoolName']?>">
+    <div id="nameHelp" class="form-text text-muted">Enter the name of the school.</div>
+  </div>
 
-    </td>
-       <td>
-    <form method="post" action="school-delete-save.php">
-        <input type="hidden" name="scid" value="<?=$row["SchoolID"]?>" />
-        <input type="submit" value="Delete" class="btn btn-primary" />
-    </form>
-  </tr>
+  <div class="mb-3">
+    <label for="state">State</label>
+    <input type="text" class="form-control" id="state" aria-describedby="stateHelp" name="sState" value="<?=$row['State']?>">
+    <div id="stateHelp" class="form-text text-muted">Enter the state of the school.</div>
+  </div>
+  <div class="mb-3">
+    <label for="city">City</label>
+    <input type="text" class="form-control" id="city" aria-describedby="cityHelp" name="sCity" value="<?=$row['City']?>">
+    <div id="cityHelp" class="form-text text-muted">Enter the city of the school.</div>
+  </div>
+
+  <input type="hidden" name="scid" value="<?=$row['SchoolID']?>">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 <?php
   }
 } else {
@@ -95,10 +89,6 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
-  </tbody>
-    </table>
-      <br />
-    <a href="school-add.php" class="btn btn-primary">Add New</a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>

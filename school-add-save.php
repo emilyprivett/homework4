@@ -29,76 +29,42 @@
             <li class="nav-item">
         <a class="nav-link" href="school.php">Schools</a>
       </li>
-            <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="studentschool.php">Student & School</a>
       </li>
     </ul>
   </div>
 </nav>
-<h1 style="text-align:center;">Schools</h1>
 
 <?php
 $servername = "localhost";
 $username = "emilypri_homework3";
 $password = "h0mework_3";
 $dbname = "emilypri_firstdatabase";
- 
-// Create connection 
-$conn = new mysqli($servername, $username, $password, $dbname);
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * from School";
-$result = $conn->query($sql);
+$sName = $_POST['sName'];
+$sState = $_POST['sState'];
+$sCity = $_POST['sCity'];
 
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
+$sql = "INSERT INTO School(SchoolName, State, City) value (?,?,?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sss",$sName,$sState, $sCity);
+$stmt->execute();
 ?>
+<h1 style="text-align:center;">Add School</h1>
 
-    <table class="table table-danger">
-  <thead>
-    <tr>
-      <th>School ID</th>
-      <th>School Name</th>
-      <th>State</th>
-      <th>City</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><?=$row["SchoolID"]?></td>
-    <td><a href="student-school.php?id=<?=$row["SchoolID"]?>"><?=$row["SchoolName"]?></a></td>
-    <td><?=$row["State"]?></td>
-    <td><?=$row["City"]?></td>
-        <td>
-    <form method="post" action="school-edit.php">
-        <input type="hidden" name="scid" value="<?=$row["SchoolID"]?>" />
-        <input type="submit" value="Edit" class="btn btn-danger" />
-    </form>
+<div class="alert alert-success" role="alert">
+  New school was added!
+</div>
 
-    </td>
-       <td>
-    <form method="post" action="school-delete-save.php">
-        <input type="hidden" name="scid" value="<?=$row["SchoolID"]?>" />
-        <input type="submit" value="Delete" class="btn btn-primary" />
-    </form>
-  </tr>
-<?php
-  }
-} else {
-  echo "0 results";
-}
-$conn->close();
-?>
-  </tbody>
-    </table>
-      <br />
-    <a href="school-add.php" class="btn btn-primary">Add New</a>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<a href="school.php" class= "btn btn primary">Go Back!</a>
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
