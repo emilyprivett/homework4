@@ -60,7 +60,7 @@ if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
 ?>
-  <form method="post" action="professor-edit-save.php">
+  <form method="post" action="course-edit-save.php">
 
   <div class="mb-3">
     <label for="courseNumber">Course ID</label>

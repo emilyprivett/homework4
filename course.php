@@ -75,14 +75,14 @@ if ($result->num_rows > 0) {
     <td><?=$row["ProfessorID"]?></td>
     <td>
     <form method="post" action="course-edit.php">
-        <input type="hidden" name="cid" value="<?=$row["CourseID"]?>" />
+        <input type="hidden" name="cid" value="<?=$row["Course_ID"]?>" />
         <input type="submit" value="Edit" class="btn btn-danger" />
     </form>
 
     </td>
        <td>
     <form method="post" action="course-delete-save.php">
-        <input type="hidden" name="cid" value="<?=$row["CourseID"]?>" />
+        <input type="hidden" name="cid" value="<?=$row["Course_ID"]?>" />
         <input type="submit" value="Delete" class="btn btn-primary" />
     </form>
 
