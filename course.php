@@ -64,6 +64,8 @@ if ($result->num_rows > 0) {
       <th>Course ID</th>
       <th>Course Name</th>
       <th>Professor ID</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
