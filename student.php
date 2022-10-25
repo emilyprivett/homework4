@@ -117,13 +117,7 @@ if ($result->num_rows > 0) {
 
     </td>
   </tr>
-<?php
-  }
-} else {
-  echo "0 results";
-}
-$conn->close();
-?>
+
   </tbody>
     </table>
      <br />
@@ -153,7 +147,33 @@ $conn->close();
                   <div id="nameHelp" class="form-text">Enter the student's last name.</div>
                 </div>
                 
-              
+                <div class="mb-3">
+  <label for="schoolList" class="form-label">School ID</label>
+<select class="form-select" aria-label="Select School" id="schoolList" name="scid">
+<?php
+    $schoolSql = "SELECT * from School ORDER BY SchoolID";
+    $schoolResult = $conn->query($schoolSql);
+    while($schoolRow = $schoolResult->fetch_assoc()) {
+      if ($schoolRow['SchoolID'] == $row['SchoolID']) {
+        $selText = " selected";
+      } else {
+        $selText = "";
+      }
+?>
+  <option value="<?=$schoolRow['SchoolID']?>"<?=$selText?>><?=$schoolRow['SchoolID']?></option>
+<?php
+    }
+?>
+</select>
+
+<?php
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
+
 
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
