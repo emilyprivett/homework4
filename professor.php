@@ -142,7 +142,7 @@ if ($result->num_rows > 0) {
                 </div>
                 <input type="hidden" name="pid" value="<?=$row['ProfessorID']?>">
                 <input type="hidden" name="saveType" value="Edit">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <input type="submit" class="btn btn-primary" value="Submit">
               </form>
             </div>
           </div>
