@@ -126,16 +126,21 @@ if ($result->num_rows > 0) {
                         <div class="mb-3">
                           <label for="editProfessor<?=$row["ProfessorID"]?>Name" class="form-label">First Name</label>
                           <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>Name" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="pFName" value="<?=$row['ProfessorFirstName']?>">
-                          <div id="editCustomer<?=$row["Customer_ID"]?>Help" class="form-text">Enter the professor's first name.</div>
+                          <div id="editProfessor<?=$row["Customer_ID"]?>Help" class="form-text">Enter the professor's first name.</div>
                         </div>
                          <div class="mb-3">
                           <label for="editProfessor<?=$row["ProfessorID"]?>Name" class="form-label">Last Name</label>
                           <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>Name" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="pLName" value="<?=$row['ProfessorLastName']?>">
                           <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's last name.</div>
                         </div>
+                        <div class="mb-3">
+                          <label for="editProfessor<?=$row["ProfessorID"]?>Name" class="form-label">Email</label>
+                          <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>Name" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="email" value="<?=$row['Email']?>">
+                          <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's last name.</div>
+                        </div>
                         <input type="hidden" name="pid" value="<?=$row['ProfessorID']?>">
                         <input type="hidden" name="saveType" value="Edit">
-                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <input type="submit" class="btn btn-danger" value="Submit">
                       </form>
                     </div>
                   </div>
