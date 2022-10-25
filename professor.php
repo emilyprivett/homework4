@@ -111,7 +111,7 @@ if ($result->num_rows > 0) {
     </td>
     <td>
   <td>
-       <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editProfessor<?=$row["ProfessorID"]?>">
+       <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editProfessor<?=$row["ProfessorID"]?>">
                 Edit
               </button>
               <div class="modal fade" id="editProfessor<?=$row["ProfessorID"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editProfessor<?=$row["ProfessorID"]?>Label" aria-hidden="true">
@@ -126,7 +126,7 @@ if ($result->num_rows > 0) {
                         <div class="mb-3">
                           <label for="editProfessor<?=$row["ProfessorID"]?>Name" class="form-label">First Name</label>
                           <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>Name" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="pFName" value="<?=$row['ProfessorFirstName']?>">
-                          <div id="editProfessor<?=$row["Customer_ID"]?>Help" class="form-text">Enter the professor's first name.</div>
+                          <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's first name.</div>
                         </div>
                          <div class="mb-3">
                           <label for="editProfessor<?=$row["ProfessorID"]?>Name" class="form-label">Last Name</label>
@@ -140,7 +140,7 @@ if ($result->num_rows > 0) {
                         </div>
                         <input type="hidden" name="pid" value="<?=$row['ProfessorID']?>">
                         <input type="hidden" name="saveType" value="Edit">
-                        <input type="submit" class="btn btn-danger" value="Submit">
+                        <input type="submit" class="btn btn-primary" value="Submit">
                       </form>
                     </div>
                   </div>
