@@ -149,6 +149,27 @@ $conn->close();
                   <input type="text" class="form-control" id="state" aria-describedby="courseName" name="cName">
                   <div id="cName" class="form-text">Enter the course name.</div>
                 </div>
+
+                <div class="mb-3">
+  <label for="professorList" class="form-label">Professor ID</label>
+<select class="form-select" aria-label="Select Professor" id="professorList" name="pid">
+<?php
+    $professorSql = "SELECT * from Professor ORDER BY ProfessorID";
+    $professorResult = $conn->query($schoolSql);
+    while($professorRow = $professorResult->fetch_assoc()) {
+      if ($professorRow['ProfessorID'] == $row['ProfessorID']) {
+        $selText = " selected";
+      } else {
+        $selText = "";
+      }
+?>
+  <option value="<?=$professorRow['ProfessorID']?>"<?=$selText?>><?=$professorRow['ProfessorID']?></option>
+<?php
+    }
+?>
+</select>
+
+
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
@@ -157,6 +178,14 @@ $conn->close();
         </div>
       </div>
     </div>
+
+ <?php
+                  }
+                } else {
+                  echo "0 results";
+                }
+                $conn->close();
+                ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>

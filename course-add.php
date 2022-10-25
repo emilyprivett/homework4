@@ -51,6 +51,26 @@
     <div id="cnameHelp" class="form-text text-muted">Enter the course name.</div>
   </div>
 
+<div class="mb-3">
+  <label for="professorList" class="form-label">Professor ID</label>
+<select class="form-select" aria-label="Select Professor" id="professorList" name="pid">
+<?php
+    $professorSql = "SELECT * from Professor ORDER BY ProfessorID";
+    $professorResult = $conn->query($schoolSql);
+    while($professorRow = $professorResult->fetch_assoc()) {
+      if ($professorRow['ProfessorID'] == $row['ProfessorID']) {
+        $selText = " selected";
+      } else {
+        $selText = "";
+      }
+?>
+  <option value="<?=$professorRow['ProfessorID']?>"<?=$selText?>><?=$professorRow['ProfessorID']?></option>
+<?php
+    }
+?>
+</select>
+
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
