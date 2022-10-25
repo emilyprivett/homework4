@@ -121,13 +121,13 @@ if ($result->num_rows > 0) {
                           <div id="editSchool<?=$row["SchoolID"]?>Help" class="form-text">Enter the school name.</div>
                         </div>
                          <div class="mb-3">
-                          <label for="editSchool<?=$row["SchoolID"]?>" class="form-label">State</label>
-                          <input type="text" class="form-control" id="editSchool<?=$row["SchoolID"]?>" aria-describedby="editSchool<?=$row["SchoolID"]?>Help" name="state" value="<?=$row['State']?>">
+                          <label for="editSchool<?=$row["SchoolID"]?>Name" class="form-label">State</label>
+                          <input type="text" class="form-control" id="editSchool<?=$row["SchoolID"]?>Name" aria-describedby="editSchool<?=$row["SchoolID"]?>Help" name="state" value="<?=$row['State']?>">
                           <div id="editSchool<?=$row["SchoolID"]?>Help" class="form-text">Enter the state of the school.</div>
                         </div>
                         <div class="mb-3">
-                          <label for="editSchool<?=$row["SchoolID"]?>" class="form-label">City</label>
-                          <input type="text" class="form-control" id="editSchool<?=$row["SchoolID"]?>" aria-describedby="editSchool<?=$row["SchoolID"]?>Help" name="city" value="<?=$row['City']?>">
+                          <label for="editSchool<?=$row["SchoolID"]?>Name" class="form-label">City</label>
+                          <input type="text" class="form-control" id="editSchool<?=$row["SchoolID"]?>Name" aria-describedby="editSchool<?=$row["SchoolID"]?>Help" name="city" value="<?=$row['City']?>">
                           <div id="editSchool<?=$row["SchoolID"]?>Help" class="form-text">Enter the city of the school.</div>
                         </div>
                         <input type="hidden" name="scid" value="<?=$row['SchoolID']?>">

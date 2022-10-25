@@ -133,8 +133,8 @@ if ($result->num_rows > 0) {
                           <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's last name.</div>
                         </div>
                         <div class="mb-3">
-                          <label for="editProfessor<?=$row["ProfessorID"]?>" class="form-label">Email</label>
-                          <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="email" value="<?=$row['Email']?>">
+                          <label for="editProfessor<?=$row["ProfessorID"]?>Name" class="form-label">Email</label>
+                          <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>Name" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="email" value="<?=$row['Email']?>">
                           <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's email.</div>
                         </div>
                         <input type="hidden" name="pid" value="<?=$row['ProfessorID']?>">
