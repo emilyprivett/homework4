@@ -87,7 +87,7 @@ if ($result->num_rows > 0) {
         $selText = "";
       }
 ?>
-  <option value="<?=$schoolRow['SchoolID']?>"<?=$selText?>><?=$schoolRow['SchoolID']?></option>
+  <option value="<?=$schoolRow['SchoolName']?>"<?=$selText?>><?=$schoolRow['SchoolName']?></option>
 <?php
     }
 ?>
