@@ -137,8 +137,8 @@ if ($result->num_rows > 0) {
        <td>
     <form method="post" action="course-delete-save.php">
         <input type="hidden" name="cid" value="<?=$row["Course_ID"]?>" />
-        <input type="submit" value="Delete" class="btn btn-primary onclick="return confirm('Are you sure?')" />
-        </form>
+        <input type="submit" value="Delete" class="btn btn-primary" onclick="return confirm('Are you sure?')" />
+    </form>
     </tr>
 
   </tbody>
