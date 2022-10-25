@@ -140,6 +140,7 @@ if ($result->num_rows > 0) {
                   <input type="text" class="form-control" id="professorEmail" aria-describedby="emailHelp" name="email">
                   <div id="emailHelp" class="form-text">Enter the professor's email.</div>
                 </div>
+                <input type="hidden" name="pid" value="<?=$row['ProfessorID']?>">
                 <input type="hidden" name="saveType" value="Edit">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
