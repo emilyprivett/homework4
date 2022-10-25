@@ -117,7 +117,13 @@ if ($result->num_rows > 0) {
 
     </td>
   </tr>
-  
+   <?php
+                  }
+                } else {
+                  echo "0 results";
+                }
+                $conn->close();
+                ?>
 
   </tbody>
     </table>
@@ -174,14 +180,7 @@ if ($result->num_rows > 0) {
         </div>
       </div>
     </div>
-    
-                  <?php
-                  }
-                } else {
-                  echo "0 results";
-                }
-                $conn->close();
-                ?>
+   
 
 
 
