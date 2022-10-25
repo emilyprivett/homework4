@@ -50,6 +50,33 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  switch ($_POST['saveType']) {
+    case 'Add':
+      $sqlAdd = "INSERT INTO Course (CourseID, CourseName) value (?,?)";
+      $stmtAdd = $conn->prepare($sqlAdd);
+      $stmtAdd->bind_param("is", $_POST['cID'], $_POST['cName']);
+      $stmtAdd->execute();
+      echo '<div class="alert alert-success" role="alert">New course added.</div>';
+      break;
+    case 'Edit':
+      $sqlEdit = "UPDATE Course SET CourseID=?, CourseName=? WHERE Course_ID=?";
+      $stmtEdit = $conn->prepare($sqlEdit);
+      $stmtEdit->bind_param("isi", $_POST['cID'], $_POST['cName'], $_POST['cid']);
+      $stmtEdit->execute();
+      echo '<div class="alert alert-success" role="alert">Course edited.</div>';
+      break;
+    case 'Delete':
+      $sqlDelete = "DELETE FROM Course WHERE Course_ID=?";
+      $stmtDelete = $conn->prepare($sqlDelete);
+      $stmtDelete->bind_param("i", $_POST['cid']);
+      $stmtDelete->execute();
+      echo '<div class="alert alert-success" role="alert">Course deleted.</div>';
+      break;
+  }
+}
+?>
+<?php
 $sql = "SELECT * from Course";
 $result = $conn->query($sql);
 
@@ -83,7 +110,7 @@ if ($result->num_rows > 0) {
        <td>
     <form method="post" action="course-delete-save.php">
         <input type="hidden" name="cid" value="<?=$row["Course_ID"]?>" />
-        <input type="submit" value="Delete" class="btn btn-primary" />
+        <input type="submit" value="Delete" class="btn btn-primary onclick="return confirm('Are you sure?')" />
     </form>
 
   </tr>
@@ -97,7 +124,39 @@ $conn->close();
   </tbody>
     </table>
     <br />
-    <a href="course-add.php" class="btn btn-primary">Add New</a>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCourse">
+        Add New
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="addCourse" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addCourseLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addCourseLabel">Add Course</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="">
+                <div class="mb-3">
+                  <label for="courseID" class="form-label">Course ID</label>
+                  <input type="text" class="form-control" id="courseID" aria-describedby="couseIDHelp" name="cID">
+                  <div id="courseIDHelp" class="form-text">Enter the course ID.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="courseName" class="form-label">Course Name</label>
+                  <input type="text" class="form-control" id="state" aria-describedby="courseName" name="cName">
+                  <div id="cName" class="form-text">Enter the course name.</div>
+                </div>
+                <input type="hidden" name="saveType" value="Add">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>

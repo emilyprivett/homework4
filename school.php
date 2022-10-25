@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo '<div class="alert alert-success" role="alert">School edited.</div>';
       break;
     case 'Delete':
-      $sqlDelete = "DELETE FROM School where SchoolID=?";
+      $sqlDelete = "DELETE FROM School WHERE SchoolID=?";
       $stmtDelete = $conn->prepare($sqlDelete);
       $stmtDelete->bind_param("i", $_POST['scid']);
       $stmtDelete->execute();

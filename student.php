@@ -50,6 +50,33 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  switch ($_POST['saveType']) {
+    case 'Add':
+      $sqlAdd = "INSERT INTO Student (StudentFirstName, StudentLastName) value (?,?)";
+      $stmtAdd = $conn->prepare($sqlAdd);
+      $stmtAdd->bind_param("ss", $_POST['sFName'], $_POST['sLName']);
+      $stmtAdd->execute();
+      echo '<div class="alert alert-success" role="alert">New student added.</div>';
+      break;
+    case 'Edit':
+      $sqlEdit = "UPDATE Student SET StudentFirstName=?, StudentLastName=? WHERE StudentID=?";
+      $stmtEdit = $conn->prepare($sqlEdit);
+      $stmtEdit->bind_param("ss", $_POST['sFName'], $_POST['sLName']);
+      $stmtEdit->execute();
+      echo '<div class="alert alert-success" role="alert">Student edited.</div>';
+      break;
+    case 'Delete':
+      $sqlDelete = "DELETE FROM Student WHERE StudentID=?";
+      $stmtDelete = $conn->prepare($sqlDelete);
+      $stmtDelete->bind_param("i", $_POST['sid']);
+      $stmtDelete->execute();
+      echo '<div class="alert alert-success" role="alert">Student deleted.</div>';
+      break;
+  }
+}
+?>
+<?php
 $sql = "SELECT * from Student";
 $result = $conn->query($sql);
 
@@ -85,7 +112,7 @@ if ($result->num_rows > 0) {
        <td>
     <form method="post" action="student-delete-save.php">
         <input type="hidden" name="sid" value="<?=$row["StudentID"]?>" />
-        <input type="submit" value="Delete" class="btn btn-primary" />
+        <input type="submit" value="Delete" class="btn btn-primary" onclick="return confirm('Are you sure?')" />
     </form>
 
     </td>
@@ -99,8 +126,40 @@ $conn->close();
 ?>
   </tbody>
     </table>
-    <br />
-    <a href="student-add.php" class="btn btn-primary">Add New</a>
+     <br />
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudent">
+        Add New
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="addStudent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addStudentLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addStudentLabel">Add Student</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="">
+                <div class="mb-3">
+                  <label for="studentFirstName" class="form-label">Student First Name</label>
+                  <input type="text" class="form-control" id="studentFirstName" aria-describedby="nameHelp" name="sFName">
+                  <div id="nameHelp" class="form-text">Enter the student's first name.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="studentLastName" class="form-label">Student Last Name</label>
+                  <input type="text" class="form-control" id="state" aria-describedby="nameHelp" name="sLName">
+                  <div id="nameHelp" class="form-text">Enter the student's last name.</div>
+                </div>
+                <input type="hidden" name="saveType" value="Add">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>

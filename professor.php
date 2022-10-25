@@ -50,6 +50,33 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  switch ($_POST['saveType']) {
+    case 'Add':
+      $sqlAdd = "INSERT INTO Professor (ProfessorFirstName, ProfessorLastName, Email) value (?,?,?)";
+      $stmtAdd = $conn->prepare($sqlAdd);
+      $stmtAdd->bind_param("sss", $_POST['pFName'], $_POST['pLName'], $_POST['email']);
+      $stmtAdd->execute();
+      echo '<div class="alert alert-success" role="alert">New professor added.</div>';
+      break;
+    case 'Edit':
+      $sqlEdit = "UPDATE Professor SET ProfessorFirstName=?, ProfessorLastName=? WHERE ProfessorID=?";
+      $stmtEdit = $conn->prepare($sqlEdit);
+      $stmtEdit->bind_param("sss", $_POST['pFName'], $_POST['pLName'], $_POST['email']);
+      $stmtEdit->execute();
+      echo '<div class="alert alert-success" role="alert">Professor edited.</div>';
+      break;
+    case 'Delete':
+      $sqlDelete = "DELETE FROM Professor WHERE ProfessorID=?";
+      $stmtDelete = $conn->prepare($sqlDelete);
+      $stmtDelete->bind_param("i", $_POST['pid']);
+      $stmtDelete->execute();
+      echo '<div class="alert alert-success" role="alert">Professor deleted.</div>';
+      break;
+  }
+}
+?>
+<?php
 $sql = "SELECT * from Professor";
 $result = $conn->query($sql);
 
@@ -92,7 +119,7 @@ if ($result->num_rows > 0) {
        <td>
     <form method="post" action="professor-delete-save.php">
         <input type="hidden" name="pid" value="<?=$row["ProfessorID"]?>" />
-        <input type="submit" value="Delete" class="btn btn-primary" />
+        <input type="submit" value="Delete" class="btn btn-primary" onclick="return confirm('Are you sure?')" />
     </form>
 
     </td>
@@ -106,8 +133,45 @@ $conn->close();
 ?>
   </tbody>
     </table>
-    <br />
-    <a href="professor-add.php" class="btn btn-primary">Add New</a>
+  <br />
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSchool">
+        Add New
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="addSchool" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addSchoolLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addSchoolLabel">Add School</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="">
+                <div class="mb-3">
+                  <label for="professorFirstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="professorFirstName" aria-describedby="nameHelp" name="pFName">
+                  <div id="nameHelp" class="form-text">Enter the professor's first name.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="professorLastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="professorLastName" aria-describedby="nameHelp" name="pLName">
+                  <div id="pLName" class="form-text">Enter the professor's last name.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="professorEmail" class="form-label">Email</label>
+                  <input type="text" class="form-control" id="professorEmail" aria-describedby="emailHelp" name="email">
+                  <div id="emailHelp" class="form-text">Enter the professor's email.</div>
+                </div>
+                <input type="hidden" name="saveType" value="Add">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
