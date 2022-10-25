@@ -50,6 +50,7 @@
     <input type="text" class="form-control" id="studentLastName" aria-describedby="nameHelp" name="sLName">
     <div id="nameHelp" class="form-text text-muted">Enter the student's last name.</div>
   </div>
+ 
   <div class="mb-3">
   <label for="schoolList" class="form-label">School ID</label>
 <select class="form-select" aria-label="Select School" id="schoolList" name="scid">
@@ -64,10 +65,11 @@
       }
 ?>
   <option value="<?=$schoolRow['SchoolID']?>"<?=$selText?>><?=$schoolRow['SchoolID']?></option>
-  <?php
+<?php
     }
 ?>
 </select>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
