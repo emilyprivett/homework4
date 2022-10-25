@@ -118,11 +118,6 @@ if ($result->num_rows > 0) {
     </td>
   </tr>
   
-<?php
-  }
-} else {
-  echo "0 results";
-}
 
   </tbody>
     </table>
@@ -173,9 +168,6 @@ if ($result->num_rows > 0) {
 </select>
 
 
-$conn->close();
-?>
-
 
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -185,6 +177,15 @@ $conn->close();
         </div>
       </div>
     </div>
+
+<?php
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
