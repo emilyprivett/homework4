@@ -35,6 +35,7 @@
     </ul>
   </div>
 </nav>
+<h1 style="text-align:center;">Schools</h1>
 
 <?php
 $servername = "localhost";
@@ -84,8 +85,6 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
 ?>
 
-
-<h1 style="text-align:center;">Schools</h1>
     <table class="table table-danger">
   <thead>
     <tr>
