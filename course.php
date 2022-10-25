@@ -132,8 +132,6 @@ if ($result->num_rows > 0) {
                 </div>
               </div>
     </td>
-
-    </td>
        <td>
     <form method="post" action="course-delete-save.php">
         <input type="hidden" name="cid" value="<?=$row["Course_ID"]?>" />
@@ -170,29 +168,28 @@ if ($result->num_rows > 0) {
                 </div>
 
                 <div class="mb-3">
-  <label for="professorList" class="form-label">Professor ID</label>
-<select class="form-select" aria-label="Select Professor" id="professorList" name="pid">
-<?php
-    $professorSql = "SELECT * from Professor ORDER BY ProfessorID";
-    $professorResult = $conn->query($schoolSql);
-    while($professorRow = $professorResult->fetch_assoc()) {
-      if ($professorRow['ProfessorID'] == $row['ProfessorID']) {
-        $selText = " selected";
-      } else {
-        $selText = "";
-      }
-?>
-  <option value="<?=$professorRow['ProfessorID']?>"<?=$selText?>><?=$professorRow['ProfessorID']?></option>
+
+            <label for="professorList" class="form-label">Professor ID</label>
+        <select class="form-select" aria-label="Select Professor" id="professorList" name="pid">
+        <?php
+            $professorSql = "SELECT * from Professor ORDER BY ProfessorID";
+            $professorResult = $conn->query($schoolSql);
+            while($professorRow = $professorResult->fetch_assoc()) {
+              if ($professorRow['ProfessorID'] == $row['ProfessorID']) {
+                $selText = " selected";
+              } else {
+                $selText = "";
+              }
+         ?>
+        <option value="<?=$professorRow['ProfessorID']?>"<?=$selText?>><?=$professorRow['ProfessorID']?></option>
 <?php
     }
 ?>
-</select>
-
-
+        </select>
+             </div>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
-            </div>
           </div>
         </div>
       </div>
