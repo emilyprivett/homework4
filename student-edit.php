@@ -81,13 +81,13 @@ if ($result->num_rows > 0) {
     $schoolSql = "SELECT * from School ORDER BY SchoolName";
     $schoolResult = $conn->query($schoolSql);
     while($schoolRow = $schoolResult->fetch_assoc()) {
-      if ($schoolRow['SchoolName'] == $row['SchoolName']) {
+      if ($schoolRow['SchoolID'] == $row['SchoolID']) {
         $selText = " selected";
       } else {
         $selText = "";
       }
 ?>
-  <option value="<?=$schoolRow['SchoolName']?>"<?=$selText?>><?=$schoolRow['SchoolName']?></option>
+  <option value="<?=$schoolRow['SchoolID']?>"<?=$selText?>><?=$schoolRow['SchoolID']?></option>
 <?php
     }
 ?>
