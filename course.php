@@ -163,30 +163,9 @@ if ($result->num_rows > 0) {
                 </div>
                 <div class="mb-3">
                   <label for="courseName" class="form-label">Course Name</label>
-                  <input type="text" class="form-control" id="state" aria-describedby="courseName" name="cName">
-                  <div id="cName" class="form-text">Enter the course name.</div>
-                </div>
-
-                <div class="mb-3">
-
-            <label for="professorList" class="form-label">Professor ID</label>
-        <select class="form-select" aria-label="Select Professor" id="professorList" name="pid">
-        <?php
-            $professorSql = "SELECT * from Professor ORDER BY ProfessorID";
-            $professorResult = $conn->query($schoolSql);
-            while($professorRow = $professorResult->fetch_assoc()) {
-              if ($professorRow['ProfessorID'] == $row['ProfessorID']) {
-                $selText = " selected";
-              } else {
-                $selText = "";
-              }
-         ?>
-        <option value="<?=$professorRow['ProfessorID']?>"<?=$selText?>><?=$professorRow['ProfessorID']?></option>
-<?php
-    }
-?>
-        </select>
-             </div>
+                  <input type="text" class="form-control" id="courseName" aria-describedby="courseNameHelp" name="cName">
+                  <div id="courseNameHelp" class="form-text">Enter the course name.</div>
+                  </div>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
@@ -194,6 +173,7 @@ if ($result->num_rows > 0) {
         </div>
       </div>
     </div>
+   </div>
 
                 <?php
                 }
