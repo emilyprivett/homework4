@@ -112,7 +112,7 @@ if ($result->num_rows > 0) {
        <td>
     <form method="post" action="school-delete-save.php">
         <input type="hidden" name="scid" value="<?=$row["SchoolID"]?>" />
-        <input type="submit" value="Delete" class="btn btn-primary" />
+        <input type="submit" value="Delete" class="btn btn-primary" onclick="return confirm('Are you sure?')" />
     </form>
   </tr>
 <?php
