@@ -74,6 +74,25 @@ if ($result->num_rows > 0) {
     <div id="nameHelp" class="form-text text-muted">Enter the student's last name.</div>
   </div>
 
+ <div class="mb-3">
+  <label for="schoolList" class="form-label">School ID</label>
+<select class="form-select" aria-label="Select School" id="schoolList" name="scid">
+<?php
+    $schoolSql = "SELECT * from School ORDER BY SchoolName";
+    $schoolResult = $conn->query($schoolSql);
+    while($schoolRow = $schoolResult->fetch_assoc()) {
+      if ($schoolRow['SchoolID'] == $row['SchoolID']) {
+        $selText = " selected";
+      } else {
+        $selText = "";
+      }
+?>
+  <option value="<?=$schoolRow['SchoolID']?>"<?=$selText?>><?=$schoolRow['SchoolID']?></option>
+<?php
+    }
+?>
+</select>
+  </div>
   <input type="hidden" name="sid" value="<?=$row['StudentID']?>">
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
