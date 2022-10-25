@@ -103,11 +103,37 @@ if ($result->num_rows > 0) {
     <td><?=$row["StudentLastName"]?></td>
     <td><?=$row["SchoolID"]?></td>
     <td>
-    <form method="post" action="student-edit.php">
-        <input type="hidden" name="sid" value="<?=$row["StudentID"]?>" />
-        <input type="submit" value="Edit" class="btn btn-danger" />
-    </form>
+       <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editStudent<?=$row["StudentID"]?>">
+                Edit
+              </button>
+              <div class="modal fade" id="editStudent<?=$row["StudentID"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editStudent<?=$row["StudentID"]?>Label" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="editStudent<?=$row["StudentID"]?>Label">Edit Student</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form method="post" action="">
+                        <div class="mb-3">
+                          <label for="editStudent<?=$row["StudentID"]?>Name" class="form-label">First Name</label>
+                          <input type="text" class="form-control" id="editStudent<?=$row["StudentID"]?>Name" aria-describedby="editStudent<?=$row["StudentID"]?>Help" name="sFName" value="<?=$row['StudentFirstName']?>">
+                          <div id="editStudent<?=$row["StudentID"]?>Help" class="form-text">Enter the student's first name.</div>
+                        </div>
+                         <div class="mb-3">
+                          <label for="editStudent<?=$row["StudentID"]?>Name" class="form-label">Last Name</label>
+                          <input type="text" class="form-control" id="editStudent<?=$row["StudentID"]?>Name" aria-describedby="editStudent<?=$row["StudentID"]?>Help" name="sLName" value="<?=$row['StudentLastName']?>">
+                          <div id="editStudent<?=$row["StudentID"]?>Help" class="form-text">Enter the student's last name.</div>
+                        </div>
 
+                        <input type="hidden" name="sid" value="<?=$row['StudentID']?>">
+                        <input type="hidden" name="saveType" value="Edit">
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
     </td>
        <td>
     <form method="post" action="student-delete-save.php">

@@ -102,12 +102,42 @@ if ($result->num_rows > 0) {
     <td><a href="student-school.php?id=<?=$row["SchoolID"]?>"><?=$row["SchoolName"]?></a></td>
     <td><?=$row["State"]?></td>
     <td><?=$row["City"]?></td>
-        <td>
-    <form method="post" action="school-edit.php">
-        <input type="hidden" name="scid" value="<?=$row["SchoolID"]?>" />
-        <input type="submit" value="Edit" class="btn btn-danger" />
-    </form>
-
+<td>
+       <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editSchool<?=$row["SchoolID"]?>">
+                Edit
+              </button>
+              <div class="modal fade" id="editSchool<?=$row["SchoolID"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editSchool<?=$row["SchoolID"]?>Label" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="editSchool<?=$row["SchoolID"]?>Label">Edit School</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form method="post" action="">
+                        <div class="mb-3">
+                          <label for="editSchool<?=$row["SchoolID"]?>Name" class="form-label">School Name</label>
+                          <input type="text" class="form-control" id="editSchool<?=$row["SchoolID"]?>Name" aria-describedby="editSchool<?=$row["SchoolID"]?>Help" name="sName" value="<?=$row['SchoolName']?>">
+                          <div id="editSchool<?=$row["SchoolID"]?>Help" class="form-text">Enter the school name.</div>
+                        </div>
+                         <div class="mb-3">
+                          <label for="editSchool<?=$row["SchoolID"]?>" class="form-label">State</label>
+                          <input type="text" class="form-control" id="editSchool<?=$row["SchoolID"]?>" aria-describedby="editSchool<?=$row["SchoolID"]?>Help" name="state" value="<?=$row['State']?>">
+                          <div id="editSchool<?=$row["SchoolID"]?>Help" class="form-text">Enter the state of the school.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="editSchool<?=$row["SchoolID"]?>" class="form-label">City</label>
+                          <input type="text" class="form-control" id="editSchool<?=$row["SchoolID"]?>" aria-describedby="editSchool<?=$row["SchoolID"]?>Help" name="city" value="<?=$row['City']?>">
+                          <div id="editSchool<?=$row["SchoolID"]?>Help" class="form-text">Enter the city of the school.</div>
+                        </div>
+                        <input type="hidden" name="scid" value="<?=$row['SchoolID']?>">
+                        <input type="hidden" name="saveType" value="Edit">
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
     </td>
        <td>
     <form method="post" action="school-delete-save.php">

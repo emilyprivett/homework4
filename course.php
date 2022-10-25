@@ -114,8 +114,8 @@ if ($result->num_rows > 0) {
                     <div class="modal-body">
                       <form method="post" action="">
                         <div class="mb-3">
-                          <label for="editCourse<?=$row["Course_ID"]?>Name" class="form-label">Course ID</label>
-                          <input type="text" class="form-control" id="editCourse<?=$row["Course_ID"]?>Name" aria-describedby="editCourse<?=$row["Course_ID"]?>Help" name="cID" value="<?=$row['CourseID']?>">
+                          <label for="editCourse<?=$row["Course_ID"]?>" class="form-label">Course ID</label>
+                          <input type="text" class="form-control" id="editCourse<?=$row["Course_ID"]?>" aria-describedby="editCourse<?=$row["Course_ID"]?>Help" name="cID" value="<?=$row['CourseID']?>">
                           <div id="editCourse<?=$row["Course_ID"]?>Help" class="form-text">Enter the course ID.</div>
                         </div>
                          <div class="mb-3">
