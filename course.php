@@ -111,9 +111,8 @@ if ($result->num_rows > 0) {
     <form method="post" action="course-delete-save.php">
         <input type="hidden" name="cid" value="<?=$row["Course_ID"]?>" />
         <input type="submit" value="Delete" class="btn btn-primary onclick="return confirm('Are you sure?')" />
-    </form>
-
-  </tr>
+        </form>
+    </tr>
 
   </tbody>
     </table>
@@ -122,7 +121,6 @@ if ($result->num_rows > 0) {
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCourse">
         Add New
       </button>
-
       <!-- Modal -->
       <div class="modal fade" id="addCourse" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addCourseLabel" aria-hidden="true">
         <div class="modal-dialog">
