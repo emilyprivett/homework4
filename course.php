@@ -138,6 +138,13 @@ if ($result->num_rows > 0) {
         <input type="submit" value="Delete" class="btn btn-primary" onclick="return confirm('Are you sure?')" />
     </form>
     </tr>
+                    <?php
+                }
+                } else {
+                  echo "0 results";
+                }
+                $conn->close();
+                ?>
 
   </tbody>
     </table>
@@ -174,14 +181,6 @@ if ($result->num_rows > 0) {
       </div>
     </div>
    </div>
-
-                <?php
-                }
-                } else {
-                  echo "0 results";
-                }
-                $conn->close();
-                ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
