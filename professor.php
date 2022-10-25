@@ -111,34 +111,34 @@ if ($result->num_rows > 0) {
     </td>
     <td>
  <!-- Button trigger modal -->
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editProfessor">
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editProfessor<?=$row["ProfessorID"]?>">
         Edit
       </button>
 
       <!-- Modal -->
-      <div class="modal fade" id="editProfessor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editProfessorLabel" aria-hidden="true">
+      <div class="modal fade" id="editProfessor<?=$row["ProfessorID"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editProfessor<?=$row["ProfessorID"]?>Label" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="addSchoolLabel">Edit Professor</h1>
+              <h1 class="modal-title fs-5" id="addProfessor<?=$row["ProfessorID"]?>Label">Edit Professor</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <form method="post" action="">
                 <div class="mb-3">
-                  <label for="professorFirstName" class="form-label">First Name</label>
-                  <input type="text" class="form-control" id="professorFirstName" aria-describedby="nameHelp" name="pFName">
-                  <div id="nameHelp" class="form-text">Enter the professor's first name.</div>
+                  <label for="editProfessor<?=$row["ProfessorID"]?>First Name" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="pFName" value="<?=$row["ProfessorFirstName"]?>">
+                  <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's first name.</div>
                 </div>
                 <div class="mb-3">
-                  <label for="professorLastName" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="professorLastName" aria-describedby="nameHelp" name="pLName">
-                  <div id="pLName" class="form-text">Enter the professor's last name.</div>
+                  <label for="editProfessor<?=$row["ProfessorID"]?>Last Name" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="pLName" value="<?=$row["ProfessorLastName"]?>">
+                  <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's last name.</div>
                 </div>
                 <div class="mb-3">
-                  <label for="professorEmail" class="form-label">Email</label>
-                  <input type="text" class="form-control" id="professorEmail" aria-describedby="emailHelp" name="email">
-                  <div id="emailHelp" class="form-text">Enter the professor's email.</div>
+                  <label for="editProfessor<?=$row["ProfessorID"]?>" class="form-label">Email</label>
+                  <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="email" value=<?=$row["Email"]?>>
+                  <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's email.</div>
                 </div>
                 <input type="hidden" name="pid" value="<?=$row['ProfessorID']?>">
                 <input type="hidden" name="saveType" value="Edit">
