@@ -64,7 +64,10 @@
       }
 ?>
   <option value="<?=$schoolRow['SchoolID']?>"<?=$selText?>><?=$schoolRow['SchoolID']?></option>
-
+  <?php
+    }
+?>
+</select>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 

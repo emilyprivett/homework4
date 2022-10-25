@@ -166,6 +166,10 @@ $conn->close();
       }
 ?>
   <option value="<?=$schoolRow['SchoolID']?>"<?=$selText?>><?=$schoolRow['SchoolID']?></option>
+  <?php
+    }
+?>
+</select>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
