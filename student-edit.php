@@ -78,7 +78,7 @@ if ($result->num_rows > 0) {
   <label for="schoolList" class="form-label">School ID</label>
 <select class="form-select" aria-label="Select School" id="schoolList" name="scid">
 <?php
-    $schoolSql = "SELECT * from School ORDER BY SchoolName";
+    $schoolSql = "SELECT * from School ORDER BY SchoolID";
     $schoolResult = $conn->query($schoolSql);
     while($schoolRow = $schoolResult->fetch_assoc()) {
       if ($schoolRow['SchoolID'] == $row['SchoolID']) {
