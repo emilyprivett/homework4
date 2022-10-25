@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo '<div class="alert alert-success" role="alert">New professor added.</div>';
       break;
     case 'Edit':
-      $sqlEdit = "UPDATE Professor SET ProfessorFirstName=?, ProfessorLastName=? WHERE ProfessorID=?";
+      $sqlEdit = "UPDATE Professor SET ProfessorFirstName=?, ProfessorLastName=?, Email=? WHERE ProfessorID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
       $stmtEdit->bind_param("sss", $_POST['pFName'], $_POST['pLName'], $_POST['email']);
       $stmtEdit->execute();
@@ -136,7 +136,7 @@ if ($result->num_rows > 0) {
                         <div class="mb-3">
                           <label for="editProfessor<?=$row["ProfessorID"]?>Name" class="form-label">Email</label>
                           <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>Name" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="email" value="<?=$row['Email']?>">
-                          <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's last name.</div>
+                          <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's email.</div>
                         </div>
                         <input type="hidden" name="pid" value="<?=$row['ProfessorID']?>">
                         <input type="hidden" name="saveType" value="Edit">
@@ -146,7 +146,6 @@ if ($result->num_rows > 0) {
                   </div>
                 </div>
               </div>
-
     </td>
        <td>
     <form method="post" action="professor-delete-save.php">
