@@ -114,13 +114,7 @@ if ($result->num_rows > 0) {
     </form>
 
   </tr>
-<?php
-  }
-} else {
-  echo "0 results";
-}
-$conn->close();
-?>
+
   </tbody>
     </table>
     <br />
