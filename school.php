@@ -35,7 +35,6 @@
     </ul>
   </div>
 </nav>
-<h1 style="text-align:center;">Schools</h1>
 
 <?php
 $servername = "localhost";
@@ -50,6 +49,33 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  switch ($_POST['saveType']) {
+    case 'Add':
+      $sqlAdd = "INSERT INTO School (SchoolName, State, City) value (?,?,?)";
+      $stmtAdd = $conn->prepare($sqlAdd);
+      $stmtAdd->bind_param("sss", $_POST['sName'], $_POST['sState'], $_POST['sCity']);
+      $stmtAdd->execute();
+      echo '<div class="alert alert-success" role="alert">New school added.</div>';
+      break;
+    case 'Edit':
+      $sqlEdit = "UPDATE School SET SchoolName=?, State=?, City=? WHERE SchoolID=?";
+      $stmtEdit = $conn->prepare($sqlEdit);
+      $stmtEdit->bind_param("sssi", $_POST['sName'], $_POST['sState'], $_POST['sCity'], $_POST['scid']);
+      $stmtEdit->execute();
+      echo '<div class="alert alert-success" role="alert">School edited.</div>';
+      break;
+    case 'Delete':
+      $sqlDelete = "DELETE FROM School where SchoolID=?";
+      $stmtDelete = $conn->prepare($sqlDelete);
+      $stmtDelete->bind_param("i", $_POST['scid']);
+      $stmtDelete->execute();
+      echo '<div class="alert alert-success" role="alert">School deleted.</div>';
+      break;
+  }
+}
+?>
+<?php
 $sql = "SELECT * from School";
 $result = $conn->query($sql);
 
@@ -58,6 +84,8 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
 ?>
 
+
+<h1 style="text-align:center;">Schools</h1>
     <table class="table table-danger">
   <thead>
     <tr>
