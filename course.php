@@ -170,7 +170,7 @@ if ($result->num_rows > 0) {
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
-              <?php
+                            <?php
   }
 } else {
   echo "0 results";
