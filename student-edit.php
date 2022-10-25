@@ -81,7 +81,7 @@ if ($result->num_rows > 0) {
     $schoolSql = "SELECT * from School ORDER BY SchoolName";
     $schoolResult = $conn->query($schoolSql);
     while($schoolRow = $schoolResult->fetch_assoc()) {
-      if ($schoolRow['SchoolID'] == $row['SchoolID']) {
+      if ($schoolRow['SchoolName'] == $row['SchoolName']) {
         $selText = " selected";
       } else {
         $selText = "";
