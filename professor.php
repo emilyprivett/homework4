@@ -110,10 +110,44 @@ if ($result->num_rows > 0) {
       </form>
     </td>
     <td>
-    <form method="post" action="professor-edit.php">
-        <input type="hidden" name="pid" value="<?=$row["ProfessorID"]?>" />
-        <input type="submit" value="Edit" class="btn btn-danger" />
-    </form>
+ <!-- Button trigger modal -->
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editProfessor">
+        Edit
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="editProfessor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editProfessorLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addSchoolLabel">Edit Professor</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="">
+                <div class="mb-3">
+                  <label for="professorFirstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="professorFirstName" aria-describedby="nameHelp" name="pFName">
+                  <div id="nameHelp" class="form-text">Enter the professor's first name.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="professorLastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="professorLastName" aria-describedby="nameHelp" name="pLName">
+                  <div id="pLName" class="form-text">Enter the professor's last name.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="professorEmail" class="form-label">Email</label>
+                  <input type="text" class="form-control" id="professorEmail" aria-describedby="emailHelp" name="email">
+                  <div id="emailHelp" class="form-text">Enter the professor's email.</div>
+                </div>
+                <input type="hidden" name="saveType" value="Edit">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     </td>
        <td>
@@ -174,44 +208,7 @@ $conn->close();
     </div>
 
     <br />
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfessor">
-        Edit
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="editProfessor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editProfessorLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="addSchoolLabel">Edit Professor</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form method="post" action="">
-                <div class="mb-3">
-                  <label for="professorFirstName" class="form-label">First Name</label>
-                  <input type="text" class="form-control" id="professorFirstName" aria-describedby="nameHelp" name="pFName">
-                  <div id="nameHelp" class="form-text">Enter the professor's first name.</div>
-                </div>
-                <div class="mb-3">
-                  <label for="professorLastName" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="professorLastName" aria-describedby="nameHelp" name="pLName">
-                  <div id="pLName" class="form-text">Enter the professor's last name.</div>
-                </div>
-                <div class="mb-3">
-                  <label for="professorEmail" class="form-label">Email</label>
-                  <input type="text" class="form-control" id="professorEmail" aria-describedby="emailHelp" name="email">
-                  <div id="emailHelp" class="form-text">Enter the professor's email.</div>
-                </div>
-                <input type="hidden" name="saveType" value="Edit">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
