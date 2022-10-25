@@ -135,16 +135,16 @@ $conn->close();
     </table>
   <br />
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSchool">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProfessor">
         Add New
       </button>
 
       <!-- Modal -->
-      <div class="modal fade" id="addSchool" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addSchoolLabel" aria-hidden="true">
+      <div class="modal fade" id="addSchool" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addProfessorLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="addSchoolLabel">Add School</h1>
+              <h1 class="modal-title fs-5" id="addProfessorLabel">Add Professor</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -165,6 +165,46 @@ $conn->close();
                   <div id="emailHelp" class="form-text">Enter the professor's email.</div>
                 </div>
                 <input type="hidden" name="saveType" value="Add">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfessor">
+        Edit
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="editProfessor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editProfessorLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addSchoolLabel">Edit Professor</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="">
+                <div class="mb-3">
+                  <label for="professorFirstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="professorFirstName" aria-describedby="nameHelp" name="pFName">
+                  <div id="nameHelp" class="form-text">Enter the professor's first name.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="professorLastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="professorLastName" aria-describedby="nameHelp" name="pLName">
+                  <div id="pLName" class="form-text">Enter the professor's last name.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="professorEmail" class="form-label">Email</label>
+                  <input type="text" class="form-control" id="professorEmail" aria-describedby="emailHelp" name="email">
+                  <div id="emailHelp" class="form-text">Enter the professor's email.</div>
+                </div>
+                <input type="hidden" name="saveType" value="Edit">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
             </div>
