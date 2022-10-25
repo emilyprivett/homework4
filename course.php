@@ -138,7 +138,13 @@ if ($result->num_rows > 0) {
         <input type="submit" value="Delete" class="btn btn-primary" onclick="return confirm('Are you sure?')" />
     </form>
     </tr>
-           
+<?php
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>         
 
   </tbody>
     </table>
@@ -170,13 +176,6 @@ if ($result->num_rows > 0) {
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
-                            <?php
-  }
-} else {
-  echo "0 results";
-}
-$conn->close();
-?>
           </div>
         </div>
       </div>
