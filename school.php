@@ -124,8 +124,46 @@ $conn->close();
 ?>
   </tbody>
     </table>
-      <br />
-    <a href="school-add.php" class="btn btn-primary">Add New</a>
+
+     <br />
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSchool">
+        Add New
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="addSchool" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addSchoolLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addSchoolLabel">Add School</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="">
+                <div class="mb-3">
+                  <label for="schoolName" class="form-label">School Name</label>
+                  <input type="text" class="form-control" id="schoolName" aria-describedby="nameHelp" name="sName">
+                  <div id="nameHelp" class="form-text">Enter the school's name.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="state" class="form-label">State</label>
+                  <input type="text" class="form-control" id="state" aria-describedby="stateHelp" name="sState">
+                  <div id="stateHelp" class="form-text">Enter the school's state.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="city" class="form-label">City</label>
+                  <input type="text" class="form-control" id="city" aria-describedby="cityHelp" name="sCity">
+                  <div id="cityHelp" class="form-text">Enter the school's city.</div>
+                </div>
+                <input type="hidden" name="saveType" value="Add">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
