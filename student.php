@@ -149,41 +149,40 @@ if ($result->num_rows > 0) {
                 </div>
                 
                 <div class="mb-3">
-  <label for="schoolList" class="form-label">School ID</label>
-<select class="form-select" aria-label="Select School" id="schoolList" name="scid">
-<?php
-    $schoolSql = "SELECT * from School ORDER BY SchoolID";
-    $schoolResult = $conn->query($schoolSql);
-    while($schoolRow = $schoolResult->fetch_assoc()) {
-      if ($schoolRow['SchoolID'] == $row['SchoolID']) {
-        $selText = " selected";
-      } else {
-        $selText = "";
-      }
-?>
-  <option value="<?=$schoolRow['SchoolID']?>"<?=$selText?>><?=$schoolRow['SchoolID']?></option>
-<?php
-    }
-?>
-</select>
-
-
-
+                    <label for="schoolList" class="form-label">School ID</label>
+                    <select class="form-select" aria-label="Select School" id="schoolList" name="scid">
+                    <?php
+                     $schoolSql = "SELECT * from School ORDER BY SchoolID";
+                     $schoolResult = $conn->query($schoolSql);
+                         while($schoolRow = $schoolResult->fetch_assoc()) {
+                              if ($schoolRow['SchoolID'] == $row['SchoolID']) {
+                                $selText = " selected";
+                              } else {
+                                $selText = "";
+                              }
+                     ?>
+                        <option value="<?=$schoolRow['SchoolID']?>"<?=$selText?>><?=$schoolRow['SchoolID']?></option>
+                    <?php
+                        }
+                    ?>
+                     </select>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
-              <?php
-  }
-} else {
-  echo "0 results";
-}
-$conn->close();
-?>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
+                  <?php
+                  }
+                } else {
+                  echo "0 results";
+                }
+                $conn->close();
+                ?>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
