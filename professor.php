@@ -127,17 +127,17 @@ if ($result->num_rows > 0) {
               <form method="post" action="">
                 <div class="mb-3">
                   <label for="editProfessor<?=$row["ProfessorID"]?>First Name" class="form-label">First Name</label>
-                  <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="pFName" value="<?=$row["ProfessorFirstName"]?>">
+                  <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>First Name" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="pFName" value="<?=$row["ProfessorFirstName"]?>">
                   <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's first name.</div>
                 </div>
                 <div class="mb-3">
                   <label for="editProfessor<?=$row["ProfessorID"]?>Last Name" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="pLName" value="<?=$row["ProfessorLastName"]?>">
+                  <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>Last Name" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="pLName" value="<?=$row["ProfessorLastName"]?>">
                   <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's last name.</div>
                 </div>
                 <div class="mb-3">
-                  <label for="editProfessor<?=$row["ProfessorID"]?>" class="form-label">Email</label>
-                  <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="email" value="<?=$row["Email"]?>">
+                  <label for="editProfessor<?=$row["ProfessorID"]?>Email" class="form-label">Email</label>
+                  <input type="text" class="form-control" id="editProfessor<?=$row["ProfessorID"]?>Email" aria-describedby="editProfessor<?=$row["ProfessorID"]?>Help" name="email" value="<?=$row["Email"]?>">
                   <div id="editProfessor<?=$row["ProfessorID"]?>Help" class="form-text">Enter the professor's email.</div>
                 </div>
                 <input type="hidden" name="pid" value="<?=$row['ProfessorID']?>">
