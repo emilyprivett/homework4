@@ -109,7 +109,6 @@ if ($result->num_rows > 0) {
         <input type="submit" value="Courses" />
       </form>
     </td>
-    <td>
   <td>
        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editProfessor<?=$row["ProfessorID"]?>">
                 Edit
@@ -152,8 +151,6 @@ if ($result->num_rows > 0) {
         <input type="hidden" name="pid" value="<?=$row["ProfessorID"]?>" />
         <input type="submit" value="Delete" class="btn btn-primary" onclick="return confirm('Are you sure?')" />
     </form>
-
-    </td>
   </tr>
 
   </tbody>
@@ -165,7 +162,7 @@ if ($result->num_rows > 0) {
       </button>
 
       <!-- Modal -->
-      <div class="modal fade" id="addSchool" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addProfessorLabel" aria-hidden="true">
+      <div class="modal fade" id="addProfessor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addProfessorLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
