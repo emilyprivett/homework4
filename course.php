@@ -187,7 +187,7 @@ if ($result->num_rows > 0) {
                   <div id="courseNameHelp" class="form-text">Enter the course name.</div>
                   </div>
                 <div class="mb-3">
-                        <label for="professorIDList" class="form-label">Professor ID</label>
+                        <label class="form-label">Professor ID</label>
                     <select class="form-select" aria-label="Select Professor ID" id="professorIDList" name="professorList">
                         <?php
                             $ProfessorSql = "SELECT * FROM Professor ORDER BY ProfessorID";
