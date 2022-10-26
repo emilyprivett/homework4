@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     case 'Edit':
       $sqlEdit = "UPDATE Student SET StudentFirstName=?, StudentLastName=?, SchoolID=? WHERE StudentID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("ssi", $_POST['sFName'], $_POST['sLName'], $_POST['schoolList']);
+      $stmtEdit->bind_param("ssii", $_POST['sFName'], $_POST['sLName'], $_POST['schoolList'], $_POST['sid']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">Student edited.</div>';
       break;
