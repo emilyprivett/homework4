@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     case 'Add':
       $sqlAdd = "INSERT INTO Student (StudentFirstName, StudentLastName, SchoolID) value (?,?,?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-      $stmtAdd->bind_param("ssi", $_POST['sFName'], $_POST['sLName'], $_POST['schoolList']);
+      $stmtAdd->bind_param("ssii", $_POST['sFName'], $_POST['sLName'], $_POST['schoolList'], $_POST['sid']);
       $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New student added.</div>';
       break;
