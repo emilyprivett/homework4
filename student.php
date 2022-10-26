@@ -53,16 +53,16 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
     case 'Add':
-      $sqlAdd = "INSERT INTO Student (StudentFirstName, StudentLastName) value (?,?)";
+      $sqlAdd = "INSERT INTO Student (StudentFirstName, StudentLastName, SchoolID) value (?,?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-      $stmtAdd->bind_param("ss", $_POST['sFName'], $_POST['sLName']);
+      $stmtAdd->bind_param("ssi", $_POST['sFName'], $_POST['sLName'], $_POST['scid']);
       $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New student added.</div>';
       break;
     case 'Edit':
-      $sqlEdit = "UPDATE Student SET StudentFirstName=?, StudentLastName=? WHERE StudentID=?";
+      $sqlEdit = "UPDATE Student SET StudentFirstName=?, StudentLastName=?, SchoolID=? WHERE StudentID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("ss", $_POST['sFName'], $_POST['sLName']);
+      $stmtEdit->bind_param("ssi", $_POST['sFName'], $_POST['sLName'], $_POST['scid']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">Student edited.</div>';
       break;
