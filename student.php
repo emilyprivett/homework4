@@ -55,14 +55,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     case 'Add':
       $sqlAdd = "INSERT INTO Student (StudentFirstName, StudentLastName, SchoolID) value (?,?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-      $stmtAdd->bind_param("ssi", $_POST['sFName'], $_POST['sLName'], $_POST['scid']);
+      $stmtAdd->bind_param("ssi", $_POST['sFName'], $_POST['sLName'], $_POST['sil']);
       $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New student added.</div>';
       break;
     case 'Edit':
       $sqlEdit = "UPDATE Student SET StudentFirstName=?, StudentLastName=?, SchoolID=? WHERE StudentID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("ssi", $_POST['sFName'], $_POST['sLName'], $_POST['scid']);
+      $stmtEdit->bind_param("ssi", $_POST['sFName'], $_POST['sLName'], $_POST['sil']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">Student edited.</div>';
       break;
