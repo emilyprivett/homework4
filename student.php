@@ -191,23 +191,22 @@ if ($result->num_rows > 0) {
                   <div id="nameHelp" class="form-text">Enter the student's last name.</div>
                 </div>
                 <div class="mb-3">
-                     <label for="addSchool<?=$row["SchoolID"]?>Name" class="form-label">School ID</label>
-                          <select class="form-select" aria-label="Select School ID" id="SchoolIDList" name="sil">
-                            <?php
-                                $SchoolSql = "SELECT * FROM School ORDER BY SchoolID";
-                                $SchoolResult = $conn->query($SchoolSql);
-                                while($SchoolRow = $SchoolResult->fetch_assoc()) {
-                                  if($SchoolRow['SchoolID'] == $row['SchoolID']){
-                                    $selText = "selected";
-                                  } else {
-                                    $selText ="";
-                                  }
-                            ?>
-                              <option value="<?=$SchoolRow['SchoolID']?>"<?=$selText?>><?=$SchoolRow['SchoolID']?></option>
-                            <?php
-                                  }
-                            ?>
-                          </select>
+                    <select class="form-select" aria-label="Select School ID" id="schoolIDList" name="schoolList">
+                        <?php
+                            $SchoolSql = "SELECT * FROM School ORDER BY SchoolID";
+                            $SchoolResult = $conn->query($SchoolSql);
+                            while($SchoolRow = $SchoolResult->fetch_assoc()) {
+                              if ($SchoolRow['SchoolID'] == $row['SchoolID']) {
+                                $selText = " selected";
+                              } else {
+                                $selText = "";
+                              }
+                        ?>
+                          <option value="<?=$SchoolRow['SchoolID']?>"<?=$selText?>><?=$SchoolRow['SchoolID']?></option>
+                        <?php
+                            }
+                        ?>
+                        </select>
                 </div>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
