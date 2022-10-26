@@ -53,16 +53,16 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
     case 'Add':
-      $sqlAdd = "INSERT INTO Student (StudentFirstName, StudentLastName, SchoolID) value (?,?)";
+      $sqlAdd = "INSERT INTO Student (StudentFirstName, StudentLastName, SchoolID) value (?,?,?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-      $stmtAdd->bind_param("ssi", $_POST['sFName'], $_POST['sLName'], $_POST['sil']);
+      $stmtAdd->bind_param("ssi", $_POST['sFName'], $_POST['sLName'], $_POST['schoolList']);
       $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New student added.</div>';
       break;
     case 'Edit':
       $sqlEdit = "UPDATE Student SET StudentFirstName=?, StudentLastName=?, SchoolID=? WHERE StudentID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("ssi", $_POST['sFName'], $_POST['sLName'], $_POST['sil']);
+      $stmtEdit->bind_param("ssi", $_POST['sFName'], $_POST['sLName'], $_POST['schoolList']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">Student edited.</div>';
       break;
@@ -127,7 +127,7 @@ if ($result->num_rows > 0) {
                         </div>
                          <div class="mb-3">
                      <label for="editStudent<?=$row["StudentID"]?>" class="form-label">School ID</label>
-                          <select class="form-select" aria-label="Select School ID" id="schoolIDList" name="sil">
+                          <select class="form-select" aria-label="Select School ID" id="schoolIDList" name="schoolList">
                             <?php
                                 $SchoolSql = "SELECT * FROM School ORDER BY SchoolID";
                                 $SchoolResult = $conn->query($SchoolSql);
