@@ -125,7 +125,25 @@ if ($result->num_rows > 0) {
                           <input type="text" class="form-control" id="editStudent<?=$row["StudentID"]?>Name" aria-describedby="editStudent<?=$row["StudentID"]?>Help" name="sLName" value="<?=$row['StudentLastName']?>">
                           <div id="editStudent<?=$row["StudentID"]?>Help" class="form-text">Enter the student's last name.</div>
                         </div>
-
+                         <div class="mb-3">
+                     <label for="editStudent<?=$row["StudentID"]?>" class="form-label">School ID</label>
+                          <select class="form-select" aria-label="Select School ID" id="schoolIDList" name="sil">
+                            <?php
+                                $SchoolSql = "SELECT * FROM School ORDER BY SchoolID";
+                                $SchoolResult = $conn->query($SchoolSql);
+                                while($SchoolRow = $SchoolResult->fetch_assoc()) {
+                                  if($SchoolRow['SchoolID'] == $row['SchoolID']){
+                                    $selText = "selected";
+                                  } else {
+                                    $selText ="";
+                                  }
+                            ?>
+                              <option value="<?=$SchoolRow['SchoolID']?>"<?=$selText?>><?=$SelectRow['StudentID']?></option>
+                            <?php
+                                  }
+                            ?>
+                          </select>
+                </div>
                         <input type="hidden" name="sid" value="<?=$row['StudentID']?>">
                         <input type="hidden" name="saveType" value="Edit">
                         <input type="submit" class="btn btn-primary" value="Submit">
@@ -172,25 +190,25 @@ if ($result->num_rows > 0) {
                   <input type="text" class="form-control" id="state" aria-describedby="nameHelp" name="sLName">
                   <div id="nameHelp" class="form-text">Enter the student's last name.</div>
                 </div>
-                
                 <div class="mb-3">
-                    <label for="schoolList" class="form-label">School ID</label>
-                    <select class="form-select" aria-label="Select School" id="schoolList" name="scid">
-                    <?php
-                     $schoolSql = "SELECT * from School ORDER BY SchoolID";
-                     $schoolResult = $conn->query($schoolSql);
-                         while($schoolRow = $schoolResult->fetch_assoc()) {
-                              if ($schoolRow['SchoolID'] == $row['SchoolID']) {
-                                $selText = " selected";
-                              } else {
-                                $selText = "";
-                              }
-                     ?>
-                        <option value="<?=$schoolRow['SchoolID']?>"<?=$selText?>><?=$schoolRow['SchoolID']?></option>
-                    <?php
-                        }
-                    ?>
-                     </select>
+                     <label for="addSchool<?=$row["SchoolID"]?>Name" class="form-label">School ID</label>
+                          <select class="form-select" aria-label="Select School ID" id="SchoolIDList" name="sil">
+                            <?php
+                                $SchoolSql = "SELECT * FROM School ORDER BY SchoolID";
+                                $SchoolResult = $conn->query($SchoolSql);
+                                while($SchoolRow = $SchoolResult->fetch_assoc()) {
+                                  if($SchoolRow['SchoolID'] == $row['SchoolID']){
+                                    $selText = "selected";
+                                  } else {
+                                    $selText ="";
+                                  }
+                            ?>
+                              <option value="<?=$SchoolRow['SchoolID']?>"<?=$selText?>><?=$SchoolRow['StudentID']?></option>
+                            <?php
+                                  }
+                            ?>
+                          </select>
+                </div>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
