@@ -138,7 +138,7 @@ if ($result->num_rows > 0) {
                                     $selText ="";
                                   }
                             ?>
-                              <option value="<?=$SchoolRow['SchoolID']?>"<?=$selText?>><?=$SelectRow['StudentID']?></option>
+                              <option value="<?=$SchoolRow['SchoolID']?>"<?=$selText?>><?=$SelectRow['SchoolID']?></option>
                             <?php
                                   }
                             ?>
@@ -203,7 +203,7 @@ if ($result->num_rows > 0) {
                                     $selText ="";
                                   }
                             ?>
-                              <option value="<?=$SchoolRow['SchoolID']?>"<?=$selText?>><?=$SchoolRow['StudentID']?></option>
+                              <option value="<?=$SchoolRow['SchoolID']?>"<?=$selText?>><?=$SchoolRow['SchoolID']?></option>
                             <?php
                                   }
                             ?>
