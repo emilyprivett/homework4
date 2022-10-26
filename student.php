@@ -187,10 +187,11 @@ if ($result->num_rows > 0) {
                 </div>
                 <div class="mb-3">
                   <label for="studentLastName" class="form-label">Student Last Name</label>
-                  <input type="text" class="form-control" id="state" aria-describedby="nameHelp" name="sLName">
+                  <input type="text" class="form-control" id="studentLastName" aria-describedby="nameHelp" name="sLName">
                   <div id="nameHelp" class="form-text">Enter the student's last name.</div>
                 </div>
                 <div class="mb-3">
+                    <label for="schoolIDList" class="form-label">School ID</label>
                     <select class="form-select" aria-label="Select School ID" id="schoolIDList" name="schoolList">
                         <?php
                             $SchoolSql = "SELECT * FROM School ORDER BY SchoolID";
