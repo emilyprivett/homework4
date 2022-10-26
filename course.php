@@ -53,16 +53,16 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
     case 'Add':
-      $sqlAdd = "INSERT INTO Course (CourseID, CourseName) value (?,?)";
+      $sqlAdd = "INSERT INTO Course (CourseID, CourseName, ProfessorID) value (?,?,?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-      $stmtAdd->bind_param("is", $_POST['cID'], $_POST['cName']);
+      $stmtAdd->bind_param("is", $_POST['cID'], $_POST['cName'], $_POST['professorList']);
       $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New course added.</div>';
       break;
     case 'Edit':
-      $sqlEdit = "UPDATE Course SET CourseID=?, CourseName=? WHERE Course_ID=?";
+      $sqlEdit = "UPDATE Course SET CourseID=?, CourseName=?, ProfessorID=? WHERE Course_ID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("isi", $_POST['cID'], $_POST['cName'], $_POST['cid']);
+      $stmtEdit->bind_param("isii", $_POST['cID'], $_POST['cName'], $_POST['cid'], $_POST['professorList']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">Course edited.</div>';
       break;
@@ -123,6 +123,25 @@ if ($result->num_rows > 0) {
                           <input type="text" class="form-control" id="editCourse<?=$row["Course_ID"]?>Name" aria-describedby="editCourse<?=$row["Course_ID"]?>Help" name="cName" value="<?=$row['CourseName']?>">
                           <div id="editCourse<?=$row["Course_ID"]?>Help" class="form-text">Enter the course name.</div>
                         </div>
+                        <div class="mb-3">
+                     <label for="editCourse<?=$row["CourseID"]?>" class="form-label">Professor ID</label>
+                          <select class="form-select" aria-label="Select Professor ID" id="professorIDList" name="professorList">
+                            <?php
+                                $ProfessorSql = "SELECT * FROM Professor ORDER BY ProfessorID";
+                                $ProfessorResult = $conn->query($ProfessorSql);
+                                while($ProfessorRow = $ProfessorResult->fetch_assoc()) {
+                                  if($ProfessorRow['ProfessorID'] == $row['ProfessorID']){
+                                    $selText = "selected";
+                                  } else {
+                                    $selText ="";
+                                  }
+                            ?>
+                              <option value="<?=$ProfessorRow['ProfessorID']?>"<?=$selText?>><?=$ProfessorRow['ProfessorID']?></option>
+                            <?php
+                                  }
+                            ?>
+                          </select>
+                </div>
                         <input type="hidden" name="cid" value="<?=$row['Course_ID']?>">
                         <input type="hidden" name="saveType" value="Edit">
                         <input type="submit" class="btn btn-primary" value="Submit">
@@ -167,6 +186,24 @@ if ($result->num_rows > 0) {
                   <input type="text" class="form-control" id="courseName" aria-describedby="courseNameHelp" name="cName">
                   <div id="courseNameHelp" class="form-text">Enter the course name.</div>
                   </div>
+                <div class="mb-3">
+                    <select class="form-select" aria-label="Select Professor ID" id="professorIDList" name="professorList">
+                        <?php
+                            $ProfessorSql = "SELECT * FROM Professor ORDER BY ProfessorID";
+                            $ProfessorResult = $conn->query($ProfessorSql);
+                            while($ProfessorRow = $ProfessorResult->fetch_assoc()) {
+                              if ($ProfessorRow['ProfessorID'] == $row['ProfessorID']) {
+                                $selText = " selected";
+                              } else {
+                                $selText = "";
+                              }
+                        ?>
+                          <option value="<?=$ProfessorRow['ProfessorID']?>"<?=$selText?>><?=$ProfessorRow['ProfessorID']?></option>
+                        <?php
+                            }
+                        ?>
+                        </select>
+                </div>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
